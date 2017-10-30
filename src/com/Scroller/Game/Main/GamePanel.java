@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 public class GamePanel extends JPanel implements Runnable,KeyListener {
 	private int FPS = 60;
 	private long TargetTime = 1000 / FPS;
-	
+	private GameStateManager gsm;
 	
 	
 	private boolean isrunning = false;
@@ -34,6 +34,7 @@ public class GamePanel extends JPanel implements Runnable,KeyListener {
 	}
 	public void run(){
 		long Start,Elapsed,Wait = 0;
+		gsm = new GameStateManager();
 		while(isrunning){
 			Start = System.nanoTime();
 			tick();
@@ -53,30 +54,29 @@ public class GamePanel extends JPanel implements Runnable,KeyListener {
 		
 	}
 	public void tick() {
+		gsm.tick();
 	}
 	public void paintcomponent(Graphics g){
 		super.paintComponent(g);
-		g.drawRect(10, 10, 10, 10);
+		g.clearRect(0, 0, WIDTH, HEIGHT);
+		gsm.draw(g);
 	}
 
 	
 	public void keyPressed(KeyEvent e) {
-	
+	gsm.keypressed(e.getKeyCode());
 		
 	}
 
 
 	public void keyReleased(KeyEvent e) {
-	
+	gsm.keyreleased(e.getKeyCode());
 		
 	}
 
 
 	
-	public void keyTyped(KeyEvent e) {
-		
-		
-	}
+	public void keyTyped(KeyEvent e) {}
 		
 	}
 
