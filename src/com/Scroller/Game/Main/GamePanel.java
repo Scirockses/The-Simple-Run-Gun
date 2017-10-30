@@ -20,6 +20,9 @@ public class GamePanel extends JPanel implements Runnable,KeyListener {
 	public static final int WIDTH = 800;
 	public static final int HEIGHT = 600;
 	public GamePanel() {
+		addKeyListener(this);
+		setFocusable(true);
+		
 		setPreferredSize (new Dimension(WIDTH,HEIGHT));
 		Start();
 		
@@ -37,8 +40,10 @@ public class GamePanel extends JPanel implements Runnable,KeyListener {
 		gsm = new GameStateManager();
 		while(isrunning){
 			Start = System.nanoTime();
+			
 			tick();
 			repaint();
+			
 			Elapsed = System.nanoTime() - Start;
 			Wait = TargetTime - Elapsed / 1000000;
 			if (Wait <= 0){
@@ -56,7 +61,7 @@ public class GamePanel extends JPanel implements Runnable,KeyListener {
 	public void tick() {
 		gsm.tick();
 	}
-	public void paintcomponent(Graphics g){
+	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		g.clearRect(0, 0, WIDTH, HEIGHT);
 		gsm.draw(g);
