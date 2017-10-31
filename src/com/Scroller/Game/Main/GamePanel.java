@@ -40,9 +40,9 @@ public class GamePanel extends JPanel implements Runnable,KeyListener {
 	public void run(){
 		long Start,Elapsed,Wait = 0;
 		gsm = new GameStateManager();
-		Start = System.nanoTime();
+		
 		while(isrunning){
-			
+			Start = System.nanoTime();
 			
 			tick();
 			repaint();
@@ -52,12 +52,13 @@ public class GamePanel extends JPanel implements Runnable,KeyListener {
 			if (Wait <= 0){
 			Wait = 5;
 		}
+			try {
+				Thread.sleep(Wait);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 		}
-	try{
-		Thread.sleep(Wait);
-	}catch(Exception e){
-		e.printStackTrace();
-	}
+	
 		
 		
 	}
