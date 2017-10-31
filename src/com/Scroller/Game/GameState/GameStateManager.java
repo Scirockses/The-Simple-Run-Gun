@@ -1,10 +1,10 @@
-package com.Scroller.Game.Main;
+package com.Scroller.Game.GameState;
 
 import java.awt.Graphics;
 import java.util.Stack;
 
 public class GameStateManager {
-	private Stack<GameState> States;
+	public Stack<GameState> States;
 
 	public GameStateManager(){
 		States = new Stack<GameState>();

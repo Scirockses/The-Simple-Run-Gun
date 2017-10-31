@@ -6,6 +6,8 @@ import java.awt.event.KeyListener;
 
 import javax.swing.JPanel;
 
+import com.Scroller.Game.GameState.GameStateManager;
+
 
 
 public class GamePanel extends JPanel implements Runnable,KeyListener {
@@ -38,8 +40,9 @@ public class GamePanel extends JPanel implements Runnable,KeyListener {
 	public void run(){
 		long Start,Elapsed,Wait = 0;
 		gsm = new GameStateManager();
+		Start = System.nanoTime();
 		while(isrunning){
-			Start = System.nanoTime();
+			
 			
 			tick();
 			repaint();

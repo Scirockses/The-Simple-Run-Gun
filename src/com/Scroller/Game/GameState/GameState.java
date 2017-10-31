@@ -1,4 +1,4 @@
-package com.Scroller.Game.Main;
+package com.Scroller.Game.GameState;
 
 import java.awt.Graphics;
 

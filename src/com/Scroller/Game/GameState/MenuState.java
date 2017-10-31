@@ -1,9 +1,10 @@
-package com.Scroller.Game.Main;
+package com.Scroller.Game.GameState;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
+import com.Scroller.Game.Main.GamePanel;
 import com.sun.glass.events.KeyEvent;
 
 public class  MenuState extends GameState {
@@ -46,9 +47,9 @@ public class  MenuState extends GameState {
 		}
 		if(k == KeyEvent.VK_ENTER){
 			if(currentselection == 0){
-				//play
+				gsm.States.push(new LevelState(gsm));
 			}else if(currentselection == 1) {
-				//help
+				//options
 			}else if(currentselection == 2){
 				System.exit(0);
 			}
